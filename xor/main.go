@@ -14,26 +14,37 @@ var secretKey = flag.String("secret", "", "Secret key to use")
 
 func main() {
 	flag.Parse()
+	
+	if len(*secretKey) == 0 {
+		fmt.Println("No secret is provided. Exit...")
+
+	}
 
 	switch *mode {
 
 	case "cipher":
 		plainText := getUserInput("Enter your text to cipher: ")
-		fmt.Println(cipherer.Cipher(plainText, *secretKey))
+		cipheredText, err := cipherer.Cipher(plainText, *secretKey)
+		if err != nil {
+			fmt.Fprintf(os.Stderr, "An error occurred: %s\n", err)
+			os.Exit(1)
+		}
+		fmt.Println(cipheredText)
 
 	case "decipher":
 		cipherText := getUserInput("Enter your text to decipher: ")
-		fmt.Println(cipherer.Decipher(cipherText, *secretKey))
+		desipheredText, err := cipherer.Decipher(cipherText, *secretKey)
+		if err != nil {
+			fmt.Fprintf(os.Stderr, "An error occurred: %s\n", err)
+			os.Exit(1)
+		}
+		fmt.Println(desipheredText)
 
 	default:
 		fmt.Println("Invalid mode. Set to 'cipher' or 'decipher'")
 		os.Exit(1)
 	}
 
-	if len(*secretKey) == 0 {
-		fmt.Println("No secret is provided. Exit...")
-
-	}
 }
 
 func getUserInput(msg string) string {
