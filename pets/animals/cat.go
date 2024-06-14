@@ -1,9 +1,13 @@
 package animals
 
-import "fmt"
+import (
+	"fmt"
+	
+)
 
 type Cat struct {
-	Name string
+	Animal
+	Age uint8
 }
 
 func (c *Cat) Eat(amount uint8) (uint8, error) {
@@ -13,3 +17,8 @@ func (c *Cat) Eat(amount uint8) (uint8, error) {
 
 	return amount, nil
 }
+
+func (c *Cat) Walk() string {
+	return fmt.Sprintf("%s is walking", c.GetName())
+}
+
