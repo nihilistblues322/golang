@@ -27,6 +27,15 @@ type Animal struct {
 	Name string
 }
 
+type ActionError struct {
+	Name   string
+	Reason string
+}
+
+func (e *ActionError) Error() string {
+	return fmt.Sprintf("%s cannot perform the action: %s ", e.Name, e.Reason)
+}
+
 func (a *Animal) GetName() string {
 	caser := cases.Title(language.English)
 	return caser.String(a.Name)

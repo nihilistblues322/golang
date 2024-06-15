@@ -8,12 +8,16 @@ import (
 
 func main() {
 	myCat := animals.Cat{
-		Animal: animals.Animal{Name: "garfield"},
-		Age:    5}
+		Animal:   animals.Animal{Name: "garfield"},
+		Age:      5,
+		IsAsleep: true,
+	}
 	myDog := animals.Dog{
-		Animal: animals.Animal{Name: "fido"},
-		Age:    3,
-		Weight: 30}
+		Animal:   animals.Animal{Name: "fido"},
+		Age:      3,
+		Weight:   30,
+		IsAsleep: false,
+	}
 
 	var feedToCat uint8 = 5
 	var feedToDog uint8 = 15
@@ -69,7 +73,7 @@ func displayInfo(i interface{}) {
 		fmt.Println("I am a cat and my age is", v.Age)
 	case animals.Dog:
 		fmt.Println("I am a dog and my weight is", v.Weight)
-	case int :
+	case int:
 		fmt.Println("I am an int")
 	}
 }
