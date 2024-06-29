@@ -14,7 +14,7 @@ func main() {
 
 	for _, a := range numbers {
 		fmt.Printf("%d\t", a)
-		for _, b:= range numbers {
+		for _, b := range numbers {
 			fmt.Printf("%d\t", a*b)
 		}
 		fmt.Print("\n")

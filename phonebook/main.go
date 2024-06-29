@@ -28,7 +28,7 @@ func main() {
 		parts := strings.SplitN(line, " ", 2)
 		command := parts[0]
 		args := parts[1:]
-	
+
 		switch command {
 		case "add":
 			handleCommand(doAdd, args, phoneBook)
